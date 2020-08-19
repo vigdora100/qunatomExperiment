@@ -1,0 +1,19 @@
+package src;
+
+public class Experiment {
+
+	private int numOfIterations;
+	private double errorConstant;
+	
+	public Experiment(String name) {
+		this.name = name;
+		this.errorConstant = Math.random();
+	}
+	
+
+
+	public String run() {
+		return name;
+	}
+
+}
