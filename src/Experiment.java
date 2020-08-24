@@ -23,15 +23,16 @@ public abstract class Experiment implements Runnable{
 	    for(int i=0; i < numOfIterations; i++){
     	    double number1 = Math.random();
 			double number2 = Math.random();
-			double accurateResult = this.calcLogic(number1,number2);
-    	    double result  = this.accurateResult(number1,number2);
+			double result = this.calcLogic(number1,number2);
+			double accurateResult  = this.accurateResult(number1,number2);
+			printedResult.append(number1 + " "+ arithmeticSign +" "  + number2
+				+ " = " + result);
     	    if(accurateResult == result){
-				printedResult.append(number1 + " "+ arithmeticSign +" "  + number2
-				+ " = " + accurateResult + "   (correct)" + "\n");
-				  numOfaccuracies = numOfaccuracies+1;
+				printedResult.append("   (correct)" + "\n");
+				numOfaccuracies = numOfaccuracies+1;
+			}else{
+				printedResult.append("   (error)" + "\n");
 			}
-			printedResult.append(number1+ " "+ arithmeticSign +" "  + number2
-			+ " = " + accurateResult + "   (error)" + "\n");
 		}
 		double successRate = numOfaccuracies / numOfIterations;
 		printedResult.append(this.expiramentName +" Success rate: "  +  successRate);

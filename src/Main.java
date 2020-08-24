@@ -3,8 +3,8 @@ package src;
 public class Main
 {
 	public static void main(String[] args) {
-		AddExperiment firstQuantom = new AddExperiment(20,"Crystal 1");
-		AddExperiment SecondQuantom = new AddExperiment(20,"Crystal 2");
+		Experiment firstQuantom = new AddExperiment(20,"Crystal 1");
+		Experiment SecondQuantom = new AddExperiment(20,"Crystal 2");
 		Thread thread1 = new Thread(firstQuantom);
 		Thread thread2 = new Thread(SecondQuantom);
 

@@ -9,11 +9,11 @@ public class AddExperiment extends Experiment{
         this.calculator = new Calculator(name);
 	}
 	
-    public double calcLogic(double number1,double number2){
+    public double accurateResult(double number1,double number2){
             return number1+number2;
     }
 
-    public double accurateResult(double number1,double number2){
+    public double calcLogic(double number1,double number2){
         return calculator.add(number1,number2);
     }
 
