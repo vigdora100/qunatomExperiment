@@ -1,44 +1,49 @@
 package src;
 
-public class Experiment implements Runnable{
+public abstract class Experiment implements Runnable{
 
-	private int numOfIterations;
-	private String name;
+	private double numOfIterations;
+	private String expiramentName;
 	private ExperimentResult result;
+	private String arithmeticSign;
 	
-	private void setResult(ExperimentResult result ){
+	protected void setResult(ExperimentResult result ){
 		this.result = result; 
 	} 
 
-	public Experiment(int numOfIterations, String name) {
+	public Experiment(double numOfIterations, String expiramentName, String arithmeticSign ) {
 		this.numOfIterations = numOfIterations;
-		this.name = name;
+		this.expiramentName = expiramentName;
+		this.arithmeticSign = arithmeticSign;
 	}
 	
 	public void run() {
-        int numOfaccuracies = 0;
-		Calculator calculator = new Calculator(this.name);
+		int numOfaccuracies = 0;
 		StringBuilder printedResult = new StringBuilder(); 
-	    for(int i=0; i<numOfIterations; i++){
+	    for(int i=0; i < numOfIterations; i++){
     	    double number1 = Math.random();
 			double number2 = Math.random();
-			double accurateResult = number1+number2;
-    	    double result  = calculator.add(number1,number2);
+			double accurateResult = this.calcLogic(number1,number2);
+    	    double result  = this.accurateResult(number1,number2);
     	    if(accurateResult == result){
-				printedResult.append(number1 + " + "  + number2
+				printedResult.append(number1 + " "+ arithmeticSign +" "  + number2
 				+ " = " + accurateResult + "   (correct)" + "\n");
 				  numOfaccuracies = numOfaccuracies+1;
 			}
-			printedResult.append(number1+ " + "  + number2
+			printedResult.append(number1+ " "+ arithmeticSign +" "  + number2
 			+ " = " + accurateResult + "   (error)" + "\n");
 		}
-		double successRate = numOfaccuracies / 20.0;
-		printedResult.append(this.name +" Success rate: "  +  successRate);
+		double successRate = numOfaccuracies / numOfIterations;
+		printedResult.append(this.expiramentName +" Success rate: "  +  successRate);
 		this.setResult(new ExperimentResult(successRate, printedResult.toString())); 
 	}
 
 	public ExperimentResult getResult(){
 		return result; 
-	} 
+	}
+	
+	public abstract double calcLogic(double number1, double number2);
+	public abstract double accurateResult(double number1, double number2);
+
 
 }
