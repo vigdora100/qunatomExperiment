@@ -5,7 +5,7 @@ public class SubstractExperiment extends Experiment{
     private Calculator calculator;
     	
 	public SubstractExperiment(int numOfIterations, String name) {
-        super(numOfIterations, name, "-");
+        super(numOfIterations, name,"-");
         this.calculator = new Calculator(name);
 	}
 	

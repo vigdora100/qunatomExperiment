@@ -25,7 +25,7 @@ public abstract class Experiment implements Runnable{
 			double number2 = Math.random();
 			double result = this.calcLogic(number1,number2);
 			double accurateResult  = this.accurateResult(number1,number2);
-			printedResult.append(number1 + " "+ arithmeticSign +" "  + number2
+			printedResult.append(number1 + " " + arithmeticSign + " "  + number2
 				+ " = " + result);
     	    if(accurateResult == result){
 				printedResult.append("   (correct)" + "\n");
